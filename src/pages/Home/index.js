@@ -1,23 +1,24 @@
-import React, { useState } from 'react'
-import { useLocation } from 'wouter'
-import useGifs from '../../hooks/useGifs'
-import ListOfGifs from '../../components/ListOfGifs'
+import React, { useState } from 'react';
+import { useLocation } from 'wouter';
+import useGifs from 'hooks/useGifs';
+import ListOfGifs from 'components/ListOfGifs';
+import TrendingSearches from 'components/TrendingSearches';
 
 const Home = () => {
-  const [keyword, setKeyword] = useState('')
-  const [path, pushLocation] = useLocation()
-  const { loading, gifs } = useGifs()
+  const [keyword, setKeyword] = useState('');
+  const [path, pushLocation] = useLocation();
+  const { loading, gifs } = useGifs();
 
   const handleChange = e => {
-    setKeyword(e.target.value)
-  }
+    setKeyword(e.target.value);
+  };
 
   const handleSubmit = e => {
-    e.preventDefault()
-    pushLocation(`/search/${keyword}`)
-  }
+    e.preventDefault();
+    pushLocation(`/search/${keyword}`);
+  };
 
-  if (loading) return <i>Loading...</i>
+  if (loading) return <i>Loading...</i>;
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -29,8 +30,11 @@ const Home = () => {
         />
       </form>
       <ListOfGifs gifs={gifs} />
+      <div className="app-category">
+        <TrendingSearches />
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
