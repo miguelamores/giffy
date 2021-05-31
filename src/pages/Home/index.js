@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useLocation } from 'wouter';
 import useGifs from 'hooks/useGifs';
 import ListOfGifs from 'components/ListOfGifs';
-import TrendingSearches from 'components/TrendingSearches';
+import LazyTrending from 'components/LazyTrending';
 
 const Home = () => {
   const [keyword, setKeyword] = useState('');
@@ -31,7 +31,7 @@ const Home = () => {
       </form>
       <ListOfGifs gifs={gifs} />
       <div className="app-category">
-        <TrendingSearches />
+        <LazyTrending />
       </div>
     </>
   );

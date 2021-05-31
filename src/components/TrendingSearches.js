@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './TrendingSearches.css';
 import getTrendingTerms from 'services/getTrendingTermsService';
-import useNearScreen from 'hooks/useNearScreen';
 
 const TrendingSearches = () => {
   const [trends, setTrends] = useState([]);
@@ -21,10 +20,4 @@ const TrendingSearches = () => {
   );
 };
 
-const LazyTranding = () => {
-  const { isNearScreen, fromRef } = useNearScreen({ distance: '50px' });
-
-  return <div ref={fromRef}>{isNearScreen ? <TrendingSearches /> : null}</div>;
-};
-
-export default LazyTranding;
+export default TrendingSearches;
